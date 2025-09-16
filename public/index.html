@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Blog de Clase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>KATHERINE'S BLOG</h1>
+        <p class="p-head">SENA Centro agroempresarial y turistico de los andes</p>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Welcome to my Blog</h2>
+            <p>In this space you will find the work I have done during the course. I hope you like it...</p>
+        </section>
+
+        <section class="documentos">
+            <h2>Documents</h2>
+            <div class="archivos">
+                <a href="/uploads/documents/documento1.pdf" class="archivo" target="_blank">Brochure</a>
+                <a href="/uploads/documents/documento2.pdf" class="archivo" target="_blank">Chronicle</a>
+            </div>
+        </section>
+
+        <section class="multimedia">
+            <h2>Videos</h2>
+            <div class="videos">
+                <video controls width="400">
+                    <source src="/uploads/videos/video1.mp4" type="video/mp4">
+                    Your browser does not support video.
+                </video>
+                <video controls width="400">
+                    <source src="/uploads/videos/video2.mp4" type="video/mp4">
+                    Your browser does not support video.
+                </video>
+            </div>
+
+            <h2>Audio</h2>
+            <div class="audios">
+                <audio controls>
+                    <source src="/uploads/audios/audio1.mp3" type="audio/mpeg">
+                    Your browser does not support Audio.
+                </audio>
+            </div>
+        </section>
+        <section>
+            <h3>Critical Thinking and Media Literacy</h3>
+            <p>Critical thinking and media literacy are almost natural defenses that 
+                we all need about the enormous power of artificial intelligence especially 
+                in education. AI can open doors wonderful: access to information customized, 
+                help for students with different forms to learning, automatic translate those 
+                broke obstacles linguistics, including motivation with tools interactives who 
+                before was unthinkable, but the same time also it tries risks as incorrect 
+                information excessive dependency or loss of capacity thinking for yourself. 
+                This is where critical thinking comes is not accepting anything that AI or 
+                any other source says, but learning to question, compare and reflect. education 
+                should not be responded faster, using AI as mirror when your obligation is 
+                thought better. Media literacy is also the key to understanding how messages 
+                are constructed and how algorithms work to display show information different 
+                in a data reliable or manipulation.</p>
+
+            <h3>Crime and Punishment</h3>
+            <p>The digital world has opened great opportunities for learning, communication and 
+                progress, but it has also created new scenarios for crime, as cybercrime data, 
+                fraud online or attack systems it is not less important that physical crime also
+                 can affect the lives of millions of people in seconds. however, the punishment 
+                 for those crimes cannot limit in legal penalty is necessary accompany of digital 
+                 education and technological ethics, many crimes arise from bad actions online 
+                 and the unique and only solution is education and justice must punish to protect 
+                 people and built culture.</p>
+
+        </section>
+
+        <section class="opiniones">
+            <h2>Visitor Reviews</h2>
+            <div id="comentarios-lista">
+            </div>
+            <h3>Leave your opinion</h3>
+            <form id="formulario-comentario">
+                <input type="text" id="nombre" placeholder="your name" required>
+                <textarea id="comentario" placeholder="your opinion" required></textarea>
+                <button type="submit">Send Opinion</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>2025 - activities blog</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
