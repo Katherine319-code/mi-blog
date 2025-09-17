@@ -3,7 +3,9 @@ const path = require('path');
 const { execSync } = require('child_process');
 
 const dbPath = path.join(__dirname, 'comentarios.json');
+
 const repoPath = process.cwd(); // Ruta de tu proyecto
+
 
 // Asegurar que el archivo existe
 if (!fs.existsSync(dbPath)) {
