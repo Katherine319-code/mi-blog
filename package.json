@@ -1,7 +1,7 @@
 {
   "name": "mi-blog",
   "version": "1.0.0",
-  "description": "Blog para mostrar trabajos de clase",
+  "description": "it is my Blog to show my skills",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
