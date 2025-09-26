@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const { sql, poolPromise } = require('./db');
+const { Pool } = require('pg');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -9,22 +10,22 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-// Servir frontend
+// desplegar frontend
 app.use(express.static(path.join(__dirname, '../public')));
 
 // 📌 GET: Listar comentarios
 app.get('/api/comentarios', async (req, res) => {
     try {
         const pool = await poolPromise;
-        const result = await pool.request().query("SELECT * FROM Comentarios ORDER BY fecha DESC");
-        res.json(result.recordset);
+        const result = await pool.query("SELECT * FROM Comentarios ORDER BY fecha DESC");
+        res.json(result.row);
     } catch (err) {
-        console.error(err);
+        console.error("Error al obtener comentarios",err);
         res.status(500).json({ error: err.message });
     }
 });
 
-// 📌 POST: Insertar comentario
+// 📌 POST: Agregar comentario
 app.post('/api/comentarios', async (req, res) => {
     try {
         const { nombre, comentario } = req.body;
@@ -33,11 +34,9 @@ app.post('/api/comentarios', async (req, res) => {
             return res.status(400).json({ error: "Nombre y comentario son requeridos" });
         }
 
-        const pool = await poolPromise;
-        await pool.request()
-            .input('nombre', sql.VarChar, nombre)
-            .input('comentario', sql.Text, comentario)
-            .query('INSERT INTO Comentarios (nombre, comentario, fecha) VALUES (@nombre, @comentario, GETDATE())');
+         await pool.query("INSERT INTO Comentarios (nombre, comentario, fecha) VALUES ($1, $2, NOW())",
+            [nombre, comentario]
+        );
 
         res.json({ success: true, message: "Comentario guardado correctamente" });
     } catch (err) {
@@ -45,7 +44,6 @@ app.post('/api/comentarios', async (req, res) => {
         res.status(500).json({ error: "Error al guardar el comentario" });
     }
 });
-
 
 
 app.listen(PORT, () => {
