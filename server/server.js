@@ -15,14 +15,25 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // Crear la base de datos
 
-pool.query(
-    `CREATE TABLE IF NOT EXISTS Comentarios (
+(async () => {
+
+  try {
+
+    await pool.query(`
+
+      CREATE TABLE IF NOT EXISTS comentarios (
         id SERIAL PRIMARY KEY,
         nombre VARCHAR(100) NOT NULL,
         comentario TEXT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )`
-);
+        fecha TIMESTAMP DEFAULT NOW()
+      );
+
+    `);
+    console.log("Tabla 'comentarios' verificada/creada correctamente.");
+    } catch (err) {
+        console.error("Error al crear/verificar la tabla 'comentarios':", err);
+    }                       
+})();
 
 // 📌 GET: Listar comentarios
 app.get('/api/comentarios', async (req, res) => {
