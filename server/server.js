@@ -13,6 +13,17 @@ app.use(express.json());
 // desplegar frontend
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Crear la base de datos
+
+pool.query(
+    `CREATE TABLE IF NOT EXISTS Comentarios (
+        id SERIAL PRIMARY KEY,
+        nombre VARCHAR(100) NOT NULL,
+        comentario TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )`
+);
+
 // 📌 GET: Listar comentarios
 app.get('/api/comentarios', async (req, res) => {
     try {
